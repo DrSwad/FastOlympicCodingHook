@@ -3,8 +3,8 @@ Problem test-case parser for sublime text from various online judges. Depends on
 
 <u><b>Setup</b></u>
 
-- Make sure you have `python3`, [FastOlympicCoding](https://github.com/Jatana/FastOlympicCoding) and [Competitive Companion](https://github.com/jmerle/competitive-companion) installed, 
-- Add `12345` in the list of ports of competitive-companion browser extension
+- Make sure you have `python3`, [FastOlympicCoding](https://github.com/Jatana/FastOlympicCoding) and [Competitive Companion](https://github.com/jmerle/competitive-companion) installed.
+- Add `12345` in the list of ports of competitive-companion browser extension.
 - Clone the [repository](https://github.com/DrSchwad/FastOlympicCodingHook) inside your Sublime Text Packages folder and rename the cloned folder to `FastOlympicCodingHook`. You can do a quick google search to locate that folder for your particular OS or you can click the "Browse Packages" option in Sublime Text (if you find it) and the folder will open itself.
 
 <u><b>Usage</b></u>
