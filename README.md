@@ -13,3 +13,7 @@ Problem test-case parser for sublime text from various online judges. Depends on
 2. In the browser, navigate to the problem page and click on the competitive-companion extension's `green plus icon`.
 
 The problem test cases and correct answer would be parsed now and stored in a file named `your filename/tests`. You might not immediately see the change in test cases inside sublime text. But if you run your code using FastOlympicCoding plugin (`ctrl+B`), then it'll you show those updated test cases and run your code against them.
+
+To see a walkthrough of the setup process, you can watch this video:
+
+[![Setup walkthrough](https://img.youtube.com/vi/68dm0bLwcsY/hqdefault.jpg)](https://youtu.be/68dm0bLwcsY)
