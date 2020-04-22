@@ -4,6 +4,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import _thread
 import threading
+import platform
 
 
 def MakeHandlerClassFromFilename(filename):
@@ -21,8 +22,11 @@ def MakeHandlerClassFromFilename(filename):
                         "correct_answers": [test["output"].strip()]
                     }
                     ntests.append(ntest)
-                print(filename)
-                with open(filename + ":tests", "w") as f:
+                nfilename = filename + ":tests"
+                if platform.system() == "Windows":
+                    nfilename = filename + "__tests"
+                print(nfilename)
+                with open(nfilename, "w") as f:
                     f.write(json.dumps(ntests))
             except Exception as e:
                 print("Error handling POST - " + str(e))
