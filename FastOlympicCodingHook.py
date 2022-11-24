@@ -40,6 +40,7 @@ class CompetitiveCompanionServer:
         port = 12345
         HandlerClass = MakeHandlerClassFromFilename(filename)
         httpd = HTTPServer((host, port), HandlerClass)
+        httpd.allow_reuse_address = True
         httpd.serve_forever()
         print("Server has been shutdown")
 
