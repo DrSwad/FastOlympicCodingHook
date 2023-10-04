@@ -5,9 +5,11 @@ import json
 import _thread
 import threading
 import platform
+from os import path
 
+def MakeHandlerClassFromFilename(file_full_path, tests_relative_dir, tests_file_suffix):
+    if not tests_file_suffix: tests_file_suffix = "__tests"
 
-def MakeHandlerClassFromFilename(filename):
     class HandleRequests(BaseHTTPRequestHandler):
         def do_POST(self):
             try:
@@ -22,10 +24,11 @@ def MakeHandlerClassFromFilename(filename):
                         "correct_answers": [test["output"].strip()]
                     }
                     ntests.append(ntest)
-                nfilename = filename + ":tests"
-                if platform.system() == "Windows":
-                    nfilename = filename + "__tests"
-                print(nfilename)
+                file_relative_dir = path.dirname(file_full_path)
+                file_name = path.basename(file_full_path)
+                nfilename = path.join(file_relative_dir, tests_relative_dir, file_name + tests_file_suffix) \
+                    if tests_relative_dir else path.join(file_relative_dir, file_name + tests_file_suffix)
+                print("New test case path: " + nfilename)
                 with open(nfilename, "w") as f:
                     f.write(json.dumps(ntests))
             except Exception as e:
@@ -35,10 +38,12 @@ def MakeHandlerClassFromFilename(filename):
 
 
 class CompetitiveCompanionServer:
-    def startServer(filename):
+    def startServer(file_full_path, foc_settings):
         host = 'localhost'
         port = 12345
-        HandlerClass = MakeHandlerClassFromFilename(filename)
+        tests_relative_dir = foc_settings.get("tests_relative_dir")
+        tests_file_suffix = foc_settings.get("tests_file_suffix")
+        HandlerClass = MakeHandlerClassFromFilename(file_full_path, tests_relative_dir, tests_file_suffix)
         httpd = HTTPServer((host, port), HandlerClass)
         httpd.serve_forever()
         print("Server has been shutdown")
@@ -48,6 +53,7 @@ class FastOlympicCodingHookCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         try:
             _thread.start_new_thread(CompetitiveCompanionServer.startServer,
-                                     (self.view.file_name(),))
+                                     (self.view.file_name(),
+                                      sublime.load_settings("FastOlympicCoding.sublime-settings")))
         except Exception as e:
             print("Error: unable to start thread - " + str(e))
