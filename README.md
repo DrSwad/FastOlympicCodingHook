@@ -6,7 +6,7 @@ Problem test-case parser for sublime text from various online judges. Depends on
 - Make sure you have `python3`, [FastOlympicCoding](https://github.com/Jatana/FastOlympicCoding) and [Competitive Companion](https://github.com/jmerle/competitive-companion) installed.
 - Add `12345` in the list of ports of competitive-companion browser extension.
 - Clone the [repository](https://github.com/DrSchwad/FastOlympicCodingHook) inside your Sublime Text Packages folder and rename the cloned folder to `FastOlympicCodingHook`. You can do a quick google search to locate that folder for your particular OS or you can click the "Browse Packages" option in Sublime Text (if you find it) and the folder will open itself.
-- Configure the relative directory and file suffix for test cases files in the FastOlympicCoding settings (`FastOlympicCoding.sublime-settings`, After making changes to this file, remember to restart Sublime Text to ensure that this plugin fetches the latest configuration.), or keep the default values (`"tests_relative_dir": ""`) while ensuring that `"tests_file_suffix"` is not empty to prevent overwriting your code file.
+- Configure the relative directory and file suffix for test cases files in the FastOlympicCoding settings (`FastOlympicCoding.sublime-settings`). <b>After making changes to this file, remember to restart Sublime Text to ensure that this plugin fetches the latest configuration.</b>. You can also keep the default values (`"tests_relative_dir": ""`) while ensuring that `"tests_file_suffix"` is not empty to prevent overwriting your code file.
 
 <u><b>Usage</b></u>
 
